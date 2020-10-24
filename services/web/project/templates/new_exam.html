@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block content %} {% with messages =
+get_flashed_messages() %} {% if messages %}
+<div class="notification is-danger" style="text-align: center">
+  {{ messages[0] }}
+</div>
+{% endif %} {% endwith %}
+
+<section>
+  <h2 class="title">{{ user.name }}, add your exam info.</h2>
+      <div>
+  <form name="exam" id="exam" action="{{ url_for('main.submit_exam') }}" method="POST" oninput="x.value=parseInt(dilation.value)+parseInt(effacement.value) + +parseInt(station.value)">
+
+  <p>Dilation: <span id="dil_demo"></span> cm</p>
+  <input type="range" class="slider" min="0" max="20" id="dilation" name="dilation" value="10">
+  <br>
+
+  <p>Effacement: <span id="eff_demo"></span> cm</p>
+  <input type="range" class="slider" min="0" max="30" id="effacement" name="effacement" value="10">
+  <br>
+
+  <p>Station: <span id="sta_demo"></span> cm</p>
+  <input type="range" class="slider" min="0" max="40" id="station" name="station" value="10">
+
+
+  <br>
+  <div style="text-align: center" >
+  <label for="bishop">Bishop's Score:</label>
+  <output name="x" for="dilation effacement station" value="0"></output><br>
+</div>
+  <button class="button is-block is-info is-large is-fullwidth">
+      Submit Exam Info.
+  </button>
+</form>
+    </div>
+</section>
+
+<script>
+  var dil_slider = document.getElementById("dilation");
+  var dil_output = document.getElementById("dil_demo");
+  dil_output.innerHTML = dil_slider.value;
+
+  dil_slider.oninput = function() {
+    dil_output.innerHTML = this.value;
+  }
+
+  var eff_slider = document.getElementById("effacement");
+  var eff_output = document.getElementById("eff_demo");
+  eff_output.innerHTML = eff_slider.value;
+
+  eff_slider.oninput = function() {
+    eff_output.innerHTML = this.value;
+  }
+
+  var sta_slider = document.getElementById("station");
+  var sta_output = document.getElementById("sta_demo");
+  sta_output.innerHTML = sta_slider.value;
+
+  sta_slider.oninput = function() {
+    sta_output.innerHTML = this.value;
+  }
+</script>
+
+{% endblock %}

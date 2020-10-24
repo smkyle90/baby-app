@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<div>
+
+<section>
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <div class="notification is-danger" style="text-align: center">
+    {{ messages[0] }}
+  </div>
+  {% endif %} {% endwith %}
+</section>
+
+<h1 class="title">Add note.</h1>
+  <form name="notes" action="{{ url_for('main.submit_note') }}" method="POST">
+    <textarea rows="10" name="notes" , style="width: 100%"></textarea>
+    <button class="button is-block is-info is-large is-fullwidth">
+      Add note.
+    </button>
+  </form>
+</section>
+</div>
+{% endblock %}

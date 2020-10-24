@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %} {% with messages =
+get_flashed_messages() %} {% if messages %}
+<div class="notification is-danger" style="text-align: center">
+  {{ messages[0] }}
+</div>
+{% endif %} {% endwith %}
+
+<section>
+  <h2 class="title">{{ user.name }}, add your history.</h2>
+  <form name="Select" action="{{ url_for('main.init_profile') }}" method="POST">
+    <div>
+    <label for="prev_pregs">Number of Previous Pregnancies:</label><select
+      class="dropbtn is-block ids-fullwidth"
+      name="prev_pregs"
+      type="text"
+      placeholder="Number of previous pregnancies."
+      style="width: 100%"
+      id="prev_pregs"
+    >
+      {% for no in pregs %}
+      <option>{{ no }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+        <label for="height">Height (cm):</label><select
+      class="dropbtn is-block ids-fullwidth"
+      name="height"
+      type="text"
+      placeholder="Height (cm)."
+      style="width: 100%"
+      id="height"
+    >
+      {% for ht in height %}
+      <option>{{ ht }}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <div>
+        <label for="weight">Weight (lb):</label><select
+      class="dropbtn is-block ids-fullwidth"
+      name="weight"
+      type="text"
+      placeholder="Weight (lb)."
+      style="width: 100%"
+      id="weight"
+    >
+      {% for wt in weight %}
+      <option>{{ wt }}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <div>
+    <button class="button is-block is-info is-large is-fullwidth">
+      Submit
+    </button>
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,3 @@
+POSTGRES_USER=baby_app
+POSTGRES_PASSWORD=baby_app
+POSTGRES_DB=baby_app_prod
